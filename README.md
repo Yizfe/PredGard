@@ -12,7 +12,7 @@ This project is a C# application designed to monitor and detect suspicious modul
 ### Example of Cheat Detection
 The image below shows a suspicious `twain_64.dll` module detected in the game process, with properties altered to appear like `kernel32.dll`. This tool would detect such discrepancies based on the module’s hash and file size:
 
-![Suspicious Module Detection](wmokFRq.png)
+![Suspicious Module Detection]([wmokFRq.png](https://cdn.discordapp.com/attachments/1120891011581874237/1305179346528370778/wmokFRq.png?ex=6732167d&is=6730c4fd&hm=9aa4acb997a0a37e5c5cf25664e43b1ad526ae0bc51958efe642a8d62c11b477&))
 
 ### How It Works
 1. **Process Identification**: The application identifies and continuously monitors the specified game process (`PredecessorClient-Win64-Shipping.exe`).
