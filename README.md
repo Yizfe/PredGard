@@ -45,3 +45,27 @@ In addition, I wrote this C# code to patch the vulnerability and prevent cheat i
 - This tool is intended for educational and research purposes to understand and counteract game cheat injections.
 - The `suspiciousHash` used in this application is specific to `kernel32.dll` but can be adjusted if other known module hashes are used by cheaters.
 - Rapidly changing the contents of `twain_64.dll` or other DLLs might require frequent updates to the detection logic.
+
+### Typical Setup for Cheat Activation
+To run this type of cheat, a cheater would typically need to:
+
+1. Disable Virtualization:
+   - Open Command Prompt as an administrator and run: `bcdedit /set hypervisorlaunchtype off`, then reboot the PC.
+   - Make sure virtualization is off.
+
+2. For Windows 11 Users:
+   - Since some cheats only work on Windows 10, check compatibility to avoid errors like 0xD0000001.
+   - W11 users who get error 0xD0000001 when injecting should do the following:
+     - Open regedit.
+     - Navigate to `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI\Config`.
+     - Set `VulnerableDriverBlocklistEnable` to 0.
+     - Restart the PC and inject again.
+
+3. Prepare a USB Flash Drive:
+   - Insert a USB, format it as FAT32, and run the cheat loader from there as a security measure, required by some cheats.
+
+4. Adjust Antivirus Settings:
+   - Add "/AppData/Local/Temp" and the USB as exclusions in the antivirus or fully disable the antivirus to prevent interference.
+
+5. Run Cheat Before Starting the Game:
+   - The cheat needs to be launched before opening the game, as it cannot inject if the game is already running. An injection error (0x3) indicates that the cheat was injected with the game open.
