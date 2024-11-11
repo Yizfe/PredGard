@@ -14,11 +14,20 @@ The image below shows a suspicious `twain_64.dll` module detected in the game pr
 
 ![Suspicious Module Detection](https://cdn.discordapp.com/attachments/1120891011581874237/1305179346528370778/wmokFRq.png?ex=6732167d&is=6730c4fd&hm=9aa4acb997a0a37e5c5cf25664e43b1ad526ae0bc51958efe642a8d62c11b477&)
 
+### Demonstration
+To illustrate the effectiveness of this code, I plan to create a demonstration video showing:
+- **Without the Code Running**: The game is vulnerable to cheat injection, with `twain_64.dll` successfully loading without being detected.
+- **With the Code Running**: The code detects and terminates the game process when `twain_64.dll` attempts to load, preventing the cheat from operating.
+
+Once the video is available, it will be linked here: [Demonstration Video]([https://example.com](https://cdn.discordapp.com/attachments/1043009166840700979/1281362094180274197/lv_0_20240905140941.mp4?ex=673273f1&is=67312271&hm=e35fb9a58bb7bee8edfc02e72a1f1aec4c8905c9631a045f5432c8b4acda18a0&))
+
+In addition, I wrote this C# code to patch the vulnerability and prevent cheat injection, although I haven't had time to make the video yet. This demonstration will provide a clear comparison of the game's behavior with and without the code, showcasing its effectiveness in real-time.
+
 ### How It Works
 1. **Process Identification**: The application identifies and continuously monitors the specified game process (`PredecessorClient-Win64-Shipping.exe`).
 2. **ETW Monitoring**: Utilizes Event Tracing for Windows (ETW) to track module load events in real-time.
 3. **Module Validation**: Each loaded module’s path and hash are checked against known values for legitimate system modules.
-4. **Suspicious Module Detection**: If a suspicious hash (`610eb92c4053347a364e49793674ff46cc4824c5be5625a84c44cd4f6168c228`) is detected, the application will output a warning, log the event, and terminate the game process to prevent cheat execution.
+4. **Suspicious Module Detection**: If a suspicious hash (`610eb92c4053347a364e49793674ff46cc4824c5be5625a84c44cd4f6168c228`) is detected, the application will output a warning, log the event, and terminate the game process to prevent cheat execution. This hash is verified and legitimate for `kernel32.dll`. We can use this to detect a fake DLL module loaded into the game, as any module with this hash but named `twain_64.dll` would be flagged as suspicious.
 5. **Optional Module Copying**: The program includes functionality to attempt copying the detected DLL for further analysis, though this may be unreliable due to the cheat’s anti-detection tactics.
 
 ### Code Overview
