@@ -19,9 +19,9 @@ To illustrate the effectiveness of this code, I plan to create a demonstration v
 - **Without the Code Running**: The game is vulnerable to cheat injection, with `twain_64.dll` successfully loading without being detected.
 - **With the Code Running**: The code detects and terminates the game process when `twain_64.dll` attempts to load, preventing the cheat from operating.
 
-Once the video is available, it will be linked here: [Demonstration Video](https://youtu.be/7FrpDl_ku5k?si=0UAxGoiHlXB7rgGq)
+Video linked here: [Demonstration Video](https://youtu.be/7FrpDl_ku5k?si=0UAxGoiHlXB7rgGq)
 
-In addition, I wrote this C# code to patch the vulnerability and prevent cheat injection, although I haven't had time to make the video yet. This demonstration will provide a clear comparison of the game's behavior with and without the code, showcasing its effectiveness in real-time.
+In addition, I wrote this C# code to patch the vulnerability and prevent cheat injection. This demonstration will provide a clear comparison of the game's behavior with and without the code, showcasing its effectiveness in real-time.
 
 ### How It Works
 1. **Process Identification**: The application identifies and continuously monitors the specified game process (`PredecessorClient-Win64-Shipping.exe`).
