@@ -19,7 +19,7 @@ To illustrate the effectiveness of this code, I plan to create a demonstration v
 - **Without the Code Running**: The game is vulnerable to cheat injection, with `twain_64.dll` successfully loading without being detected.
 - **With the Code Running**: The code detects and terminates the game process when `twain_64.dll` attempts to load, preventing the cheat from operating.
 
-Once the video is available, it will be linked here: [Demonstration Video](https://cdn.discordapp.com/attachments/1043009166840700979/1281362094180274197/lv_0_20240905140941.mp4?ex=673273f1&is=67312271&hm=e35fb9a58bb7bee8edfc02e72a1f1aec4c8905c9631a045f5432c8b4acda18a0&)
+Once the video is available, it will be linked here: [Demonstration Video](https://youtu.be/7FrpDl_ku5k?si=0UAxGoiHlXB7rgGq)
 
 In addition, I wrote this C# code to patch the vulnerability and prevent cheat injection, although I haven't had time to make the video yet. This demonstration will provide a clear comparison of the game's behavior with and without the code, showcasing its effectiveness in real-time.
 
