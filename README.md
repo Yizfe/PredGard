@@ -27,7 +27,7 @@ In addition, I wrote this C# code to patch the vulnerability and prevent cheat i
 1. **Process Identification**: The application identifies and continuously monitors the specified game process (`PredecessorClient-Win64-Shipping.exe`).
 2. **ETW Monitoring**: Utilizes Event Tracing for Windows (ETW) to track module load events in real-time.
 3. **Module Validation**: Each loaded module’s path and hash are checked against known values for legitimate system modules.
-4. **Suspicious Module Detection**: If a suspicious hash (`610eb92c4053347a364e49793674ff46cc4824c5be5625a84c44cd4f6168c228`) is detected, the application will output a warning, log the event, and terminate the game process to prevent cheat execution. This hash is verified and legitimate for `kernel32.dll`. We can use this to detect a fake DLL module loaded into the game, as any module with this hash but named `twain_64.dll` would be flagged as suspicious.
+4. **Suspicious Module Detection**:(`610eb92c4053347a364e49793674ff46cc4824c5be5625a84c44cd4f6168c228`) This hash is verified and legitimate for `kernel32.dll`. We can use this to detect a fake DLL module loaded into the game, as any module with this hash but named `twain_64.dll` would be flagged as suspicious.
 5. **Optional Module Copying**: The program includes functionality to attempt copying the detected DLL for further analysis, though this may be unreliable due to the cheat’s anti-detection tactics.
 
 ### Code Overview
