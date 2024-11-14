@@ -69,3 +69,28 @@ To run this type of cheat, a cheater would typically need to:
 
 5. Run Cheat Before Starting the Game:
    - The cheat needs to be launched before opening the game, as it cannot inject if the game is already running. An injection error (0x3) indicates that the cheat was injected with the game open.
+
+
+
+### New Feature: External Cheat Injection Detection
+
+This update includes a new function specifically designed to detect external cheat injections by monitoring interactions with `svchost.exe` and `conhost.exe`, two processes commonly targeted by cheat developers for code injection.
+
+#### How External Cheats Operate
+External cheats often work by injecting malicious code into legitimate system processes such as `svchost.exe` and spawning helper processes like `conhost.exe` to run the cheat code invisibly. By hijacking these system processes, cheats can bypass standard detection methods and interact with the game process indirectly.
+
+#### How This Code Detects External Injections
+The new function, `MonitorSvchostWithConhost`, continuously scans for any instances of `svchost.exe` that spawn `conhost.exe` as a child process. Once detected, the code:
+1. Verifies the parent-child relationship between `svchost.exe` and `conhost.exe`.
+2. Inspects all modules loaded in `conhost.exe` for signs of known cheat libraries (e.g., `kernel32.dll`, `ntdll.dll`, `d3d9.dll`).
+3. Flags any suspicious modules and attempts to terminate both `conhost.exe` and `svchost.exe` processes.
+4. As an additional safeguard, the main game process (`PredecessorClient-Win64-Shipping.exe`) is also terminated to prevent further tampering.
+
+This feature enhances the robustness of the detection system by adding an external layer of protection against indirect cheat injections.
+
+---
+
+### Demonstration Video Part 2
+
+For a visual demonstration of this feature, including examples of external cheat detection, see the link below:
+- [Demonstration Video Part 2](https://youtu.be/83UCD_Vrfco?si=wu1ZWc-MXI5UaTqB)
